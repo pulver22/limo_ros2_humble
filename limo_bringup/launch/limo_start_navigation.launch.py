@@ -1,4 +1,5 @@
 
+from http.server import executable
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -76,9 +77,9 @@ def generate_launch_description():
                           'use_remappings': use_remappings}.items())
                           
     start_lifecycle_manager_cmd = Node(
+        executable="lifecycle_manager",
         package='nav2_lifecycle_manager',
-        node_executable='lifecycle_manager',
-        node_name='lifecycle_manager',
+        name='lifecycle_manager',
         output='screen',
         parameters=[{'use_sim_time': use_sim_time},
                     {'autostart': autostart},

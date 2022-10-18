@@ -15,21 +15,21 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(name='open_rviz',
                                              default_value='false'),
         launch_ros.actions.Node(
+            executable="rviz2",
             package='rviz2',
             name='rviz2',
-            node_executable='rviz2',
             on_exit=launch.actions.Shutdown(),
             condition=launch.conditions.IfCondition(
                 launch.substitutions.LaunchConfiguration('open_rviz'))),
         launch_ros.actions.Node(
+            executable="static_transform_publisher",
             package='tf2_ros',
-            node_executable='static_transform_publisher',
             name='base_link_to_imu',
             arguments="0.0 0.0 0.0 0.0 0.0 0.0 /base_link /imu_link".split(
                 ' ')),
         # launch_ros.actions.Node(
         #     package='robot_pose_ekf',
-        #     node_executable='robot_pose_ekf',
+        #     executable='robot_pose_ekf',
         #     name='robot_pose_ekf',
         #     parameters=[
         #         {

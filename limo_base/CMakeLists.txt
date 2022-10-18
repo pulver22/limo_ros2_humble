@@ -39,6 +39,9 @@ set(DEPENDENCIES
   "limo_msgs"
   "sensor_msgs"
 )
+include_directories(/opt/ros/humble/include/tf2_geometry_msgs)
+include_directories(/opt/ros/humble/include/tf2)
+include_directories(/opt/ros/humble/include/tf2_ros)
 
 add_executable(limo_base 
     src/limo_base_node.cpp
